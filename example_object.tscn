@@ -27,10 +27,10 @@ func _on_Dragable_drag_move(node, cast):
 
 [sub_resource type="CubeMesh" id=2]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.196078, 0.294118, 0.52549, 1 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 
 [node name="Spatial" type="Spatial"]
 script = SubResource( 1 )
@@ -38,13 +38,12 @@ script = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01088, 0 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 4 )
+material/0 = SubResource( 3 )
 
 [node name="Area" type="Area" parent="MeshInstance"]
 
-[node name="Dragable" parent="MeshInstance/Area" instance=ExtResource( 2 )]
-bit = 19
+[node name="Draggable" parent="MeshInstance/Area" instance=ExtResource( 2 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
-shape = SubResource( 3 )
-[connection signal="drag_move" from="MeshInstance/Area/Dragable" to="." method="_on_Dragable_drag_move"]
+shape = SubResource( 4 )
+[connection signal="drag_move" from="MeshInstance/Area/Draggable" to="." method="_on_Dragable_drag_move"]
