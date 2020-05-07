@@ -1,0 +1,37 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Draggable",
+"language": "GDScript",
+"path": "res://addons/DragDrop3D/Draggable.gd"
+} ]
+_global_script_class_icons={
+"Draggable": ""
+}
+
+[application]
+
+config/name="3DAutobattle"
+run/main_scene="res://example.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+DragDropController="*res://addons/DragDrop3D/DragDropController.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "DragDrop3D", "dragdrop3d" )
+
+[rendering]
+
+environment/default_clear_color=Color( 0.94902, 0.94902, 0.94902, 1 )

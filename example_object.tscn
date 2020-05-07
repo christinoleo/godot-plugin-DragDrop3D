@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/DragDrop3D/Dragable.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Dragable_drag_move(node, cast):
+	set_translation(cast['position'])
+"
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.196078, 0.294118, 0.52549, 1 )
+
+[sub_resource type="BoxShape" id=3]
+
+[node name="Spatial" type="Spatial"]
+script = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01088, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="Area" type="Area" parent="MeshInstance"]
+
+[node name="Dragable" parent="MeshInstance/Area" instance=ExtResource( 2 )]
+bit = 19
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
+shape = SubResource( 3 )
+[connection signal="drag_move" from="MeshInstance/Area/Dragable" to="." method="_on_Dragable_drag_move"]
