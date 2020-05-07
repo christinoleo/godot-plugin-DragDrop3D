@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="3DAutobattle"
+config/name="godot-plugin-DragDrop3D"
 run/main_scene="res://example.tscn"
 config/icon="res://icon.png"
 

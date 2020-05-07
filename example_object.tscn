@@ -41,6 +41,7 @@ mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Area" type="Area" parent="MeshInstance"]
+collision_layer = 2
 
 [node name="Draggable" parent="MeshInstance/Area" instance=ExtResource( 2 )]
 
