@@ -21,7 +21,7 @@ func _ready():
 #	pass
 
 
-func _on_Dragable_drag_move(node, cast):
+func _on_Draggable_drag_move(node, cast):
 	set_translation(cast['position'])
 "
 
@@ -46,4 +46,4 @@ material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
 shape = SubResource( 4 )
-[connection signal="drag_move" from="MeshInstance/Area/Draggable" to="." method="_on_Dragable_drag_move"]
+[connection signal="drag_move" from="MeshInstance/Area/Draggable" to="." method="_on_Draggable_drag_move"]
