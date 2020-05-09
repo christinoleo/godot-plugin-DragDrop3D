@@ -43,9 +43,8 @@ func mouse_exited(node):
 func on_hover(cast):
 	emit_signal("drag_move", self, cast)
 
-func input_event(camera:Camera, event:InputEvent, click_position:Vector3, click_normal:Vector3, shape_idx:int, which:Node):
+func input_event(camera, event, click_position, click_normal, shape_idx, node):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-		print(event)
 		if event.is_pressed():
 			if hovered:
 				current = hovered.get_parent()

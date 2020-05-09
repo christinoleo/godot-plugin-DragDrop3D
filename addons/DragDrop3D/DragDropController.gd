@@ -28,6 +28,6 @@ func _physics_process(delta):
 	var to = from + camera.project_ray_normal(mouse) * ray_length
 	
 	var cast = camera.get_world().direct_space_state.intersect_ray(from, 
-				to, [draging.get_parent()], draging.get_parent().get_collision_mask(), false, true)
+				to, [draging.get_parent()], draging.get_parent().get_collision_mask(), true, true)
 	if not cast.empty():
 		draging.on_hover(cast)
