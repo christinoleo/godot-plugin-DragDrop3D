@@ -4,6 +4,7 @@
 export.cfg
 export_presets.cfg
 *.import
+addons/godot-plugin-refresher
 
 # Mono-specific ignores
 .mono/

@@ -28,11 +28,12 @@ func _ready():
 		return
 	if controller == null:
 		printerr('Missing DragDropController singletron!')
-	var draggable = get_parent()
-	draggable.connect("mouse_entered",self,"mouse_entered",[draggable])
-	draggable.connect("mouse_exited",self,"mouse_exited",[draggable])
-	draggable.connect("input_event",self,"input_event",[draggable])
-	controller.register_draggable(self)
+	else:
+		var draggable = get_parent()
+		draggable.connect("mouse_entered",self,"mouse_entered",[draggable])
+		draggable.connect("mouse_exited",self,"mouse_exited",[draggable])
+		draggable.connect("input_event",self,"input_event",[draggable])
+		controller.register_draggable(self)
 
 func mouse_entered(node):
 	hovered = node

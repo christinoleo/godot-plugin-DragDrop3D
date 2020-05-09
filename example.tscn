@@ -3,7 +3,7 @@
 [ext_resource path="res://example_object.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/DragDrop3D/Draggable.gd" type="Script" id=2]
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=1]
 script/source = "extends RigidBody
 
 
@@ -26,18 +26,18 @@ func _on_Draggable_drag_move(node, cast):
 	set_translation(cast['position'])
 "
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=2]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=3]
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0.196078, 0.294118, 0.52549, 1 )
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=5]
 
-[sub_resource type="PlaneMesh" id=5]
+[sub_resource type="PlaneMesh" id=6]
 
-[sub_resource type="SpatialMaterial" id=6]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.741176, 0.145098, 0.145098, 1 )
 metallic = 0.26
 
@@ -51,14 +51,14 @@ transform = Transform( 1, 0, 0, 0, 0.918032, 0.396507, 0, -0.396507, 0.918032, -
 [node name="RigidBody" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10586, 1.01088, 0 )
 collision_layer = 2
-script = SubResource( 8 )
+script = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody/CollisionShape"]
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="Draggable" type="Node" parent="RigidBody"]
 script = ExtResource( 2 )
@@ -68,10 +68,10 @@ transform = Transform( 5.67005, 0, 0, 0, 1, 0, 0, 0, 5.05323, -2.20685, -1.95427
 
 [node name="CollisionShape" type="CollisionShape" parent="Area2"]
 transform = Transform( 1, 0, 0, 0, 0.0384808, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Area2/CollisionShape"]
 transform = Transform( 1, 0, 0, 0, 25.987, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 [connection signal="drag_move" from="RigidBody/Draggable" to="RigidBody" method="_on_Draggable_drag_move"]
