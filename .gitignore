@@ -9,3 +9,4 @@ addons/godot-plugin-refresher
 # Mono-specific ignores
 .mono/
 data_*/
+.godot
