@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://d25yrlgf2wnd8"]
 
-[ext_resource path="res://addons/DragDrop3D/Dragable.tscn" type="PackedScene" id=2]
+[ext_resource type="PackedScene" path="res://addons/DragDrop3D/Dragable.tscn" id="2"]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Spatial
+[sub_resource type="GDScript" id="1"]
+script/source = "extends Node3D
 
 
 # Declare member variables here. Examples:
@@ -13,7 +13,7 @@ script/source = "extends Spatial
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+  pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,29 +22,30 @@ func _ready():
 
 
 func _on_Draggable_drag_move(node, cast):
-	set_translation(cast['position'])
+  set_position(cast['position'])
 "
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape3D" id="4"]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l72t3"]
+albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.196078, 0.294118, 0.52549, 1 )
+[sub_resource type="BoxMesh" id="2"]
 
-[node name="Spatial" type="Spatial"]
-script = SubResource( 1 )
+[node name="Node3D" type="Node3D"]
+script = SubResource("1")
 
-[node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01088, 0 )
+[node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
 
-[node name="Draggable" parent="Area" instance=ExtResource( 2 )]
+[node name="Draggable" parent="Area3D" instance=ExtResource("2")]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 4 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("4")
 
-[node name="MeshInstance" type="MeshInstance" parent="Area/CollisionShape"]
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
-[connection signal="drag_move" from="Area/Draggable" to="." method="_on_Draggable_drag_move"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_l72t3")
+mesh = SubResource("2")
+
+[connection signal="drag_move" from="Area3D/Draggable" to="." method="_on_Draggable_drag_move"]
